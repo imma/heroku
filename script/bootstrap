@@ -4,7 +4,9 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  uname -a
+  mkdir -p "$shome/bin"
+  block compile yarn
+  ln -nfs ../node_modules/.bin/heroku "$shome/bin/"
 }
 
 main "$@"
